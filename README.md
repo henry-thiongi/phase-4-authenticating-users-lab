@@ -12,24 +12,24 @@ feature.
 There is some starter code in place for a Rails API backend and a React frontend.
 To get set up, run:
 
-```console
-$ bundle install
-$ rails db:migrate db:seed
-$ npm install --prefix client
+```sh
+bundle install
+rails db:migrate db:seed
+npm install --prefix client
 ```
 
 You can work on this lab by running the tests with `learn test`. It will also be
 helpful to see what's happening during the request/response cycle by running the
 app in the browser. You can run the Rails server with:
 
-```console
-$ rails s
+```sh
+rails s
 ```
 
 And you can run React in another terminal with:
 
-```console
-$ npm start --prefix client
+```sh
+npm start --prefix client
 ```
 
 You don't have to make any changes to the React code to get this lab working.
@@ -46,40 +46,41 @@ We'll need to create the routes and controller methods to handle each of these f
 
 ### Sessions
 
-- Generate these routes:
+1. Generate these routes:
 
-  - `POST /login`: run the `SessionsController#create` method
-  - `DELETE /logout`: run the `SessionsController#destroy` method
+   - `POST /login`: run the `SessionsController#create` method
+   - `DELETE /logout`: run the `SessionsController#destroy` method
 
-- Create a sessions controller.
+2. Create a sessions controller.
 
-  - **Note:** If you use the generators to generate your controllers, be sure to
-    pass the `--no-test-framework` flag to avoid generating unneeded files:
-    `rails g controller Sessions --no-test-framework`
+   **Note:** If you use the generators to generate your controllers, be sure to
+   pass the `--no-test-framework` flag to avoid generating unneeded files:
+   `rails g controller Sessions --no-test-framework`
 
-- Make a `SessionsController#create` method. It should:
+3. Make a `SessionsController#create` method. It should:
 
-  - Find a user in the database using the username from `params`
-  - Save the user's ID to the session hash
-  - Return the user as a JSON object
+   - Find a user in the database using the username from `params`
+   - Save the user's ID to the session hash
+   - Return the user as a JSON object
 
-- Make a `SessionsController#destroy` method. It should:
+4. Make a `SessionsController#destroy` method. It should:
 
-  - Remove the user ID from the session hash
-  - Return an empty response with a 204 No Content status code
+   - Remove the user ID from the session hash
+   - Return an empty response with a 204 No Content status code
 
 ### Users
 
-- Generate these routes:
+1. Generate these routes:
 
-  - `GET /me`: run the `UsersController#show` method
+   - `GET /me`: run the `UsersController#show` method
 
-- Create a users controller.
+2. Create a users controller.
 
-  - **Note:** If you use the generators to generate your controllers, be sure to
-    pass the `--no-test-framework` flag to avoid generating unneeded files:
-    `rails g controller Users --no-test-framework`
+   **Note:** If you use the generators to generate your controllers, be sure to
+   pass the `--no-test-framework` flag to avoid generating unneeded files:
+   `rails g controller Users --no-test-framework`
 
-- Make a `UsersController#show` method. It should:
-  - Find a user in the database using the user id from the session hash
-  - Return the user as a JSON object
+3. Make a `UsersController#show` method. It should:
+
+   - Find a user in the database using the user id from the session hash
+   - Return the user as a JSON object
